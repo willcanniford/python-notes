@@ -7,4 +7,4 @@ This repository is just a collection of notebooks with code that I have written 
 - [Logic, loops and conditionals](logic_loops_conditionals.ipynb): logical statements, loops and conditionals
 - [Matplotlib beginnings](matplotlib.ipynb): basics of matplotlib
 - [Dictionaries and Pandas basics](panda_basic_dict.ipynb): overview of dictionaries and some notes on pandas
-- [Simulation exercise](simulation_exercise.ipynb): I carry out the coding and simulation of a dice game
+- [Simulation exercise](simulation_exercise/simulation_part_1.ipynb): I carry out the coding and simulation of a dice game
