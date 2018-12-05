@@ -11,3 +11,6 @@ This repository is just a collection of notebooks with code that I have written 
 - Simulation exercise:
   - [Part 1](simulation_exercise/simulation_part_1.ipynb): Coding and simulation of a dice game
   - [Part 2](simulation_exercise/simulation_part_2.ipynb): Extraction of game parts to functions to clean up the code 
+  
+### Scripts
+- [Machine Learning with `sklearn`](machine_learning): Some scripts with notes about using `sklearn` for different algorithms
