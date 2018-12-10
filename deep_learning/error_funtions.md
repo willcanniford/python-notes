@@ -10,4 +10,8 @@ In conclusion, to apply gradient descent the error function should:
 1. Be differentiable
 2. Be continuous
 
-To achieve this, we will need to move from discrete predictions, to continuous ones. We can do this by altering our activation function from the steps function to the smoother sigmoid function, we then get a probability of the class being a given state as our prediction; we can later round this to our needs to get a class prediction output. 
+To achieve this, we will need to move from discrete predictions, to continuous ones. We can do this by altering our activation function from the steps function to the smoother sigmoid function, we then get a probability of the class being a given state as our prediction; we can later round this to our needs to get a class prediction output. This is done through taking the signmoid of the model algorithm/function: sigmoid(ax+b) would give us the probability of a single point being one of our classes. 
+
+If the function equates to 0, then our sigmoid function will equate to 50% probability. It should be noted that our sigmoid function only works for binomial prediction problems.  
+
+Wwe can extend this further and use the softmax function which allows us to obtain a prediction value between 0 and 1 for multiple classes by leveraging taking the exponential of function results and creating proportional likelihoods out of all available classes.
