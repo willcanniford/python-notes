@@ -12,4 +12,4 @@ def softmax(L):
     for i in expL:
         # Make sure that we are multiplying by a float to get the right output type
         results.append(i*1.0/sumExpL)
-    return result
+    return results
