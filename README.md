@@ -1,6 +1,9 @@
 # Python notes
-This repository is just a collection of notebooks with code that I have written during my courses. I have tried to group the notebooks roughly into topics but there is, inevitably, some overlap. I spend the majority of my time working on data projects and analysing datasets when I'm not working, so this isn't representative of my python knowledge, but more what I have had time to write up. <br>
-<br>
+This repository is a collection of Jupyter notebooks I have written and development while taking numerous online courses (see my [Datacamp](https://www.datacamp.com/profile/willcanniford) profile for a list of the courses I have taken there). I have grouped them into topics the best that I can but there is, undoubtedly, some overlap.  
+
+I spend the majority of my time working on data projects and analysing datasets when I'm not working, if you want to see some of the data work that I have written up then I would check out my [Kaggle](https://www.kaggle.com/willcanniford) profile where I am a Kernels Expert. 
+
+
 - - - -
 ### Current notebooks:
 - [Functions](programming/functions.ipynb): basic functions in python
