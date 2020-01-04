@@ -1,16 +1,20 @@
+import pandas as pd
 import numpy as np
+
 
 def sigmoid(x):
     """
     Calculate sigmoid
     """
-    return 1/(1+np.exp(-x))
+    return 1 / (1 + np.exp(-x))
+
 
 def sigmoid_prime(x):
     """
     # Derivative of the sigmoid function
     """
     return sigmoid(x) * (1 - sigmoid(x))
+
 
 # Define the learning rate and inputs/result for our example
 learnrate = 0.5
@@ -20,13 +24,14 @@ y = np.array(0.5)
 # Initial weights
 w = np.array([0.5, -0.5, 0.3, 0.1])
 
-### Calculate one gradient descent step for each weight
+# Calculate one gradient descent step for each weight
 
 # TODO: Calculate the node's linear combination of inputs and weights
 h = np.dot(x, w)
 
 # TODO: Calculate output of neural network
-# This would be the sigmoid probability of a positive result given the current weights
+# This would be the sigmoid probability of a positive result given the
+# current weights
 nn_output = sigmoid(h)
 
 # TODO: Calculate error of neural network
@@ -39,7 +44,7 @@ error = y - nn_output
 error_term = error * sigmoid_prime(h)
 
 # TODO: Calculate change in weights
-# Learn rate controls the size of the steps we take 
+# Learn rate controls the size of the steps we take
 # Error term tells us in which direction to alter the weights
 del_w = learnrate * error_term * x
 
@@ -51,41 +56,41 @@ print('Change in Weights:')
 print(del_w)
 
 
-
 # Another example of implement gradient descent from exercise
 # Data prep examples
-import numpy as np
-import pandas as pd
 
 admissions = pd.read_csv('binary.csv')
 
 # Make dummy variables for rank
-data = pd.concat([admissions, pd.get_dummies(admissions['rank'], prefix='rank')], axis=1)
+data = pd.concat([admissions, pd.get_dummies(
+    admissions['rank'], prefix='rank')], axis=1)
 data = data.drop('rank', axis=1)
 
 # Standarize features
 for field in ['gre', 'gpa']:
     mean, std = data[field].mean(), data[field].std()
-    data.loc[:,field] = (data[field]-mean)/std
-    
+    data.loc[:, field] = (data[field] - mean) / std
+
 # Split off random 10% of the data for testing
 np.random.seed(42)
-sample = np.random.choice(data.index, size=int(len(data)*0.9), replace=False)
+sample = np.random.choice(data.index, size=int(len(data) * 0.9), replace=False)
 data, test_data = data.ix[sample], data.drop(sample)
 
 # Split into features and targets
 features, targets = data.drop('admit', axis=1), data['admit']
-features_test, targets_test = test_data.drop('admit', axis=1), test_data['admit']
+features_test, targets_test = test_data.drop(
+    'admit', axis=1), test_data['admit']
 
 
-# Implement the gradient descent steps 
-import numpy as np
+# Implement the gradient descent steps
+
 
 def sigmoid(x):
     """
     Calculate sigmoid function
     """
     return 1 / (1 + np.exp(-x))
+
 
 # Use to same seed to make debugging easier
 np.random.seed(42)
@@ -119,11 +124,13 @@ for e in range(epochs):
         error_term = error * output * (1 - output)
 
         # Calculate the change in weights for this sample and add it to the total weight change
-        # Note here that the del stands for delta, i.e. the change in the weights 
+        # Note here that the del stands for delta, i.e. the change in the
+        # weights
         del_w += error * x
 
     # TODO: Update weights using the learning rate and the average change in weights
-    # This is because we are calculating it point by point as opposed to calculating the average error across all points
+    # This is because we are calculating it point by point as opposed to
+    # calculating the average error across all points
     weights += learnrate * del_w / n_records
 
     # Printing out the mean square error on the training set

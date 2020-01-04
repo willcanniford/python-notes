@@ -15,18 +15,20 @@ y = data[['Var_Y']].values
 # y = np.array(list(map(lambda x: 2*x**3 - 3*x**2 + 5*x + 9, X))).flatten()
 
 # Create polynomial features
-# Create a PolynomialFeatures object, then fit and transform the predictor feature to use these polynomial features 
-poly_feat = PolynomialFeatures(degree = 4)
+# Create a PolynomialFeatures object, then fit and transform the predictor
+# feature to use these polynomial features
+poly_feat = PolynomialFeatures(degree=4)
 X_poly = poly_feat.fit_transform(X)
 
 # Make and fit the polynomial regression model
-# Create a LinearRegression object and fit it to the polynomial predictor features
-poly_model = LinearRegression(fit_intercept = False).fit(X_poly, y)
+# Create a LinearRegression object and fit it to the polynomial predictor
+# features
+poly_model = LinearRegression(fit_intercept=False).fit(X_poly, y)
 
-# Make predictions using the linear model with poly features 
+# Make predictions using the linear model with poly features
 data['Predictions'] = poly_model.predict(X_poly)
 # Sort by the values of the X variable to fix model line plotting
-data.sort_values('Var_X', inplace = True)
+data.sort_values('Var_X', inplace=True)
 
 # Visualise the predictions against the real values
 plt.scatter(data[['Var_X']].values, data[['Var_Y']].values, c='Blue')
