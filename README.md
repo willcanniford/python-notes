@@ -5,15 +5,46 @@ I spend the majority of my time working on data projects and analysing datasets 
 
 
 - - - -
-### Current notebooks:
-- [Functions](programming/functions.ipynb): basic functions in python
-- [Logic, loops and conditionals](programming/logic_loops_conditionals.ipynb): logical statements, loops and conditionals
-- [Matplotlib beginnings](visualisation/matplotlib.ipynb): basics of matplotlib
-- [Dictionaries and Pandas basics](pandas_notes/panda_basic_dict.ipynb): overview of dictionaries and some notes on pandas
-- [List comprehensions and generators](programming/list_comprehensions.ipynb): introduction to list comprehensions with examples
-- Simulation exercise:
-  - [Part 1](simulation_exercise/simulation_part_1.ipynb): Coding and simulation of a dice game
-  - [Part 2](simulation_exercise/simulation_part_2.ipynb): Extraction of game parts to functions to clean up the code 
-  
-### Scripts
-- [Machine Learning with `sklearn`](machine_learning): Some scripts with notes about using `sklearn` for different algorithms
+
+### Current sections
+_Last updated: 13th Jan 2020_
+
+#### Deep Learning 
+- PyTorch
+- Entropy
+- Error functions
+- Gradient Descent 
+- Image classification
+
+#### Importing Data
+- Flat files
+
+#### Pandas
+- Handling categorical variables 
+- Combining columns 
+- Group by 
+- Value counts
+- Handling dictionary columns
+
+#### Machine Learning 
+- Decision Trees 
+- Unsupervised learning 
+- SMV
+- SKLearn
+
+#### Programming
+- Cleaning JSON
+- Functions
+- List comprehensions
+- Progress Bar for scripts 
+- Remapping columns 
+
+#### Statistical Thinking
+- ECDF 
+- Basic Summary Statistics 
+
+#### Visualisation
+- Seaborn
+- Matplotlibn
+- Subplots
+
