@@ -12,3 +12,10 @@ If you turn on the debug mode for the application, then you don't have to restar
 
 `export FLASK_ENV=development` can be run to set the current environment to debug mode.   
 `export FLASK_ENV=production` can be run to turn this off again. 
+
+
+- - - -
+
+## TailwindCSS
+
+`npx tailwind build static/css/build.css -o static/css/main.css` this uses npm to build the static css file for tailwind from the a given css file `static/css/build.css` and outputs it to the `static/css/main.css` which is then referenced in the code. 
