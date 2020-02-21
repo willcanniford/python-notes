@@ -1,2 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+visualisation/plotly_graphing/html_output/* linguist-vendored
