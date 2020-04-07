@@ -16,3 +16,7 @@ print(data1.apply(np.mean, axis=0))
 
 # Median isn't as heavily impacted by outliers
 print(data1.apply(np.median, axis=0))
+
+# Custom percentiles can give you more information 
+percentiles = np.percentile(data1["sepal length (cm)"], [10,25,50,75,90])
+print(percentiles)
