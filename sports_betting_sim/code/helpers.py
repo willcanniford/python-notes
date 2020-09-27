@@ -39,3 +39,35 @@ def simulate_n_bets(n, odds, stake):
         returns.append(simulate_bet(odds, stake))
 
     return returns
+
+
+def bank_over_time(bank, n, odds, stake):
+    """
+    Generate an array tracking total account bank over n bets
+    :param bank: the starting amount in the account
+    :param n: int: the number of bets to simulate
+    :param odds: numeric: the odds given for the event
+    :param stake: numeric: the amount of money being staked
+    :return: np.array: bank tracking array, length of n+1
+    """
+    array = np.array([])
+    array = np.insert(array, 0, bank)
+    bank = bank
+
+    for _ in np.arange(n):
+        if bank <= 0:
+            array = np.append(array, 0)
+        else:
+            if bank < stake:
+                returns = round(simulate_bet(odds, bank), 2)
+            else:
+                returns = round(simulate_bet(odds, stake), 2)
+
+            if returns == 0:
+                bank = bank - stake
+            else:
+                bank = bank + returns
+
+            array = np.append(array, bank)
+
+    return array
