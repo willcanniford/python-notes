@@ -62,12 +62,15 @@ When the threshold for the decisions is near to 1 precision is also likely going
 
 ## Visually evaluating model performance
 ### ROC Curve
+A ROC curve is a graph that shows the performance of a classification model at all classification thresholds. False positive and true positive rates are displayed as the axis.
+
 
 ```python 
 # Import necessary modules
 from sklearn.metrics import roc_curve
 
 # Compute predicted probabilities: y_pred_prob
+# Take the second column to get probability of positive case
 y_pred_prob = logreg.predict_proba(X_test)[:,1]
 
 # Generate ROC curve values: fpr, tpr, thresholds
@@ -80,6 +83,29 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve')
 plt.show()
+```
+
+#### AUC Score
+These curves are often used in tandem with the the 'auc' metric, standing for area under the curve. The nearer this value is to 1 then the 'better' the model performs, with 0.5 indicating a model that is no better than random chance at predicting the class. 
+
+A binary classifier that is just randomly making guesses would be correct ~50% of the time. A ROC curve for this classifier would be a diagonal line where the True Positive Rate and False Positive Rate are always equal; this is the benchmark to which we compare model performance.  
+
+```python 
+# Import necessary modules
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import cross_val_score
+
+# Compute predicted probabilities: y_pred_prob
+y_pred_prob = logreg.predict_proba(X_test)[:,1]
+
+# Compute and print AUC score
+print("AUC: {}".format(roc_auc_score(y_test, y_pred_prob)))
+
+# Compute cross-validated AUC scores: cv_auc
+cv_auc = cross_val_score(logreg, X, y, cv=5, scoring='roc_auc')
+
+# Print list of AUC scores
+print("AUC scores computed using 5-fold cross-validation: {}".format(cv_auc))
 ```
 
 ### Precision-recall Curve
