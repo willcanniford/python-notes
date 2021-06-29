@@ -53,3 +53,35 @@ from sklearn.metrics import classification_report, confusion_matrix
 confusion_matrix(y_test, y_pred)
 classification_report(y_test, y_pred)
 ```
+
+A recall of 1 corresponds to a classifier with a low threshold in which all positive cases are identified but at the expense of many misclassifications of those that were negative i.e. all true positives were identified (with no false negatives) but there are likely a high number of false positives. 
+
+Precision is undefined when no positive predictions are made as the resulting metric is calculated as 0 / (0 + 0). 
+
+When the threshold for the decisions is near to 1 precision is also likely going to be high as the algorithm is very certain about its decisions and false positives are likely to be low as result. 
+
+## Visually evaluating model performance
+### ROC Curve
+
+```python 
+# Import necessary modules
+from sklearn.metrics import roc_curve
+
+# Compute predicted probabilities: y_pred_prob
+y_pred_prob = logreg.predict_proba(X_test)[:,1]
+
+# Generate ROC curve values: fpr, tpr, thresholds
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob)
+
+# Plot ROC curve
+plt.plot([0, 1], [0, 1], 'k--')
+plt.plot(fpr, tpr)
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve')
+plt.show()
+```
+
+### Precision-recall Curve
+This is plotting precision and recall for different thresholds. As you go through the threhsolds, you can see for areas where you obtain higher values for both metrics, and perhaps then apply the classifications using the associated threshold.  
+
