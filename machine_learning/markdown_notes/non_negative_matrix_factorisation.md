@@ -99,3 +99,68 @@ PCA: [here](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202)
 This doesn't mention the ability to be able to interpret those values, but talks only about creating new components that try to maintain the highest amount of variance in the data. 
 
 More details about the uses of PCA can be found ['Stack Overflow - PCA for feature selection'](https://stats.stackexchange.com/questions/27300/using-principal-component-analysis-pca-for-feature-selection) and ['What is PCA and how is it used?'](https://www.sartorius.com/en/knowledge/science-snippets/what-is-principal-component-analysis-pca-and-how-it-is-used-507186#:~:text=The%20most%20important%20use%20of,variables%2C%20and%20among%20the%20variables.). If the first and second components explain a lot of the variance, then we are able to visual the differences and see potential trends in 2 dimensions. We can also do this through the variable feature space and see which variables are causing the most difference between the samples that we are comparing. 
+  
+
+## Building recommender systems
+Finding similar samples from a test sample can be done, in theory, as the NMF features of similar samples should also be similar. 
+
+Comparing features can be difficult, as how do you compare the NMF features? The exact feature values might be different due to a shift in the strength of the values. This can manifest in words via the frequency of the works used, and you can have the same selection of words but spread out across the article, rather than a direct level of speech. I assume this would work with grayscale images where you have a lower definition or softer images compared to high contrast values. 
+
+All these versions, when plotted on a scatter plot, lie on the same line through the origin. Therefore, when comparing two samples you can use something called 'cosine similarity' and compare the angles between the two lines. 
+
+__Functionally:__
+```python 
+from sklearn.preprocessing import normalize
+norm_features = normalize(nmf_features) # For comparison only?
+current_article = norm_features[n, :]
+similarities = norm_features.dot(current_article)
+```
+
+__Using pandas:__
+```python 
+import pandas as pd
+from sklearn.preprocessing import normalize
+
+# Normalize the NMF features: norm_features
+norm_features = normalize(nmf_features)
+
+# Create a DataFrame: df
+df = pd.DataFrame(norm_features, index=titles)
+
+# Select the row corresponding to 'Cristiano Ronaldo': article
+article = df.loc['Cristiano Ronaldo']
+
+# Compute the dot products: similarities
+similarities = df.dot(article)
+
+# Display those with the largest cosine similarity
+print(similarities.nlargest())
+```
+
+__Full example:__
+```python 
+from sklearn.decomposition import NMF
+from sklearn.preprocessing import Normalizer, MaxAbsScaler
+from sklearn.pipeline import make_pipeline
+import pandas as pd 
+
+scaler = MaxAbsScaler()
+nmf = NMF(n_components=20)
+normalizer = Normalizer()
+
+# Create a pipeline: pipeline
+pipeline = make_pipeline(scaler, nmf, normalizer)
+
+# Apply fit_transform to artists: norm_features
+norm_features = pipeline.fit_transform(artists)
+df = pd.DataFrame(norm_features, index=artist_names)
+
+# Select row of 'Bruce Springsteen': artist
+artist = df.loc['Bruce Springsteen']
+
+# Compute cosine similarities: similarities
+similarities = df.dot(artist)
+
+# Display those with highest cosine similarity
+print(similarities.nlargest())
+```
